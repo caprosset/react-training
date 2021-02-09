@@ -1,21 +1,23 @@
 import React from 'react'
 
 export function BoxColor({ r, g, b }) {
-  const hex = rgbToHex(r, g, b);
-
   return (
-    <div className="box-color" style={{backgroundColor: `rgb(${r}, ${g}, ${b})`}}>
+    <div className="box-color" style={styles(r,g,b)}>
       <p>rgb({r}{g}{b})</p>
-      <p>{hex}</p>
+      <p>{rgbToHex(r, g, b)}</p>
     </div>
   )
 }
 
-function componentToHex (color) {
+const styles = (r, g, b) => ({
+  backgroundColor: `rgb(${r}, ${g}, ${b})`
+})
+
+const componentToHex = (color) => {
   const hex = color.toString(16);
   return hex.length === 1 ? "0" + hex : hex;
 }
 
-function rgbToHex (r, g, b) {
+const rgbToHex = (r, g, b) => {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

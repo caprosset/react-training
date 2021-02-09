@@ -5,13 +5,13 @@ export function CreditCard({ type, number, expirationMonth, expirationYear, bank
     backgroundColor: bgColor,
     color: color
   }
-  const imgUrl = getGreeting(type);
+  const imgUrl = getImageUrl(type);
   const creditNumber = getCreditNum(number);
 
   return (
     <div className='credit-container' style={divStyle}>
       <div>
-          <img src={imgUrl} className='credit-logo'/>
+          <img src={imgUrl} className='credit-logo' alt="Credit card logo" />
       </div>
       <p className='creditNumber'>{creditNumber}</p>
       <div>
@@ -23,12 +23,14 @@ export function CreditCard({ type, number, expirationMonth, expirationYear, bank
   )
 }
 
-function getGreeting(type) {
+function getImageUrl(type) {
   switch (type) {
     case 'Visa':
       return './img/visa.png';
     case 'Master Card':
       return './img/master-card.svg';
+    default:
+      return './img/visa.png';
   }
 }
 
